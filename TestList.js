@@ -14,7 +14,7 @@ class List  {
         this.lenght = 0;
         this.start = null;
     }
-    add = (value) => {
+    add (value)  {
         const node = new Node(value),
         currentNode = this.head;
         if (!currentNode) {
@@ -22,6 +22,7 @@ class List  {
             this.head = node;
             this.start = this.head;
             this.lenght++;
+            
         }
         else{
             node.prev = currentNode; 
@@ -29,10 +30,11 @@ class List  {
             currentNode.next = node;
             this.head = node;
             this.lenght++;
+            
         }
     }
 
-    addAtPosition = (value, number) => {
+    addAtPosition (value, number)  {
         number > this.lenght || number < 0 ? console.log('you pin wrong number') : 1;
         let currentNode = this.start;
         let prevNode = this.head;
@@ -57,14 +59,15 @@ class List  {
         }
     }
 
-    deleteAtPosition = (number) => {
+    deleteAtPosition  (number)  {
         number > this.lenght || number < 0 ? console.log('you pin wrong number') : 1;
         let currentNode = this.start;
         let prevNode = this.head;
         while (currentNode) {
             if (currentNode.number === number){
                 prevNode.next = currentNode.next;
-                let nextNode = currentNode.next
+                let nextNode = currentNode.next;
+                if(number !== this.lenght - 1)
                 nextNode.prev = currentNode.prev;
                 this.lenght--;
                 currentNode = null;
@@ -79,7 +82,7 @@ class List  {
         }
     }
 
-    deleteByValue = (value) => {
+    deleteByValue  (value)  {
         
         let currentNode = this.start;
         let prevNode = this.head;
@@ -101,33 +104,32 @@ class List  {
         }
     }
 
-    getAtPosition = (number) => {
+    getAtPosition  (number)  {
         number > this.lenght || number < 0 ? console.log('you pin wrong number') : 1;
         let currentNode = this.start;
         while (currentNode) {
             if (currentNode.number === number){
-                console.log(currentNode);
-                break;
+                return currentNode;
             }
             currentNode = currentNode.next;
         }
     }
 
-    lenghtOfList = () => {
-        console.log(this.lenght);
+    lenghtOfList  ()  {
+        return this.lenght;
     }
 
-    clone = () => {
+    clone  ()  {
         const list2 = new List();
-        let currentNode = this.start;
-        while (currentNode) {
-            list2.add(currentNode.value)
-            currentNode = currentNode.next;
-        }
+         let currentNode = this.start;
+         while (currentNode) {
+             list2.add(currentNode.value)
+             currentNode = currentNode.next;
+         }
         return list2;
     }
 
-    getByEnd = (value) => {
+    getByEnd  (value) {
         let currentNode = this.start;
         let searchNode;
         while (currentNode) {
@@ -138,14 +140,14 @@ class List  {
             currentNode = currentNode.next;
         }
         if(searchNode){
-            console.log(searchNode);
+            return searchNode;
         }
         else{
-            console.log("-1");
+            return -1;
         }
     }
 
-    getByHead = (value) => {
+    getByHead (value) {
         let currentNode = this.head;
         let searchNode;
         while (currentNode) {
@@ -156,14 +158,14 @@ class List  {
             currentNode = currentNode.prev;
         }
         if(searchNode){
-            console.log(searchNode);
+            return searchNode;
         }
         else{
-            console.log("-1");
+            return-1;
         }
     }
 
-    clear = () => {
+    clear () {
         let currentNode = this.start;
         while (this.lenght !== 0) {         
                 currentNode.prev = null;
@@ -176,21 +178,27 @@ class List  {
         }
     }
 
-    extend = (listToExtend) => {
+    extend (listToExtend) {
         let extendNode = listToExtend.start;
         while (extendNode) {
             const node = new Node(extendNode.value),
             currentNode = this.head;
             node.prev = currentNode; 
             node.number = this.lenght;
+            if(currentNode){
+            if(currentNode.next)
             currentNode.next = node;
+            }
             this.head = node;
+            if(this.lenght === 0){
+                this.start = node;
+            }
             this.lenght++;
             extendNode = extendNode.next;
         }
     }
 
-    reverse = () => {
+    reverse () {
         let currentNode = this.head;
         let searchNode;
         this.lenght = 0;
@@ -222,20 +230,23 @@ class List  {
 
 const list = new List();
 list.add(2);
-list.add(5);
-list.add(3);
-list.add(4);
-list.add(5);
-list.addAtPosition('nice', 1);
-list.addAtPosition('nice', 3);
-list.deleteByValue('nice');
-list.getAtPosition(2);
+//list.add(5);
+// list.add(3);
+// list.add(4);
+// list.add(5);
+// list.addAtPosition('nice', 1);
+// list.addAtPosition('nice', 3);
+// list.deleteByValue('nice');
+// list.getAtPosition(2);
 const listNew = list.clone();
-listNew.clear();
-//list.getByEnd(5);
-//list.getByHead(5);
-const list2 = new List();
-list2.add(8);
-list.extend(list2);
-list.reverse();
-console.log(list);
+ listNew.clear();
+// //list.getByEnd(5);
+// //list.getByHead(5);
+// const list2 = new List();
+// list2.add(8);
+// list.extend(list2);
+// list.reverse();
+//console.dir(listNew);
+console.log(listNew);
+
+module.exports = List;

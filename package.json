@@ -1,0 +1,26 @@
+{
+  "name": "UnitTests_List",
+  "version": "1.0.0",
+  "description": "",
+  "main": "TestList.js",
+  "dependencies": {
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "mocha": "^9.2.1"
+  },
+  "scripts": {
+    "test": "mocha TestList.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanKovalov/UnitTests_List.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanKovalov/UnitTests_List/issues"
+  },
+  "homepage": "https://github.com/IvanKovalov/UnitTests_List#readme"
+}
