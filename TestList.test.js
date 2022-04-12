@@ -109,7 +109,7 @@ describe("List test", function() {
         const list1 = new List();
         list1.add('1');
         list1.add('2');
-       // list1.clear();
+        list1.clear();
         const  empty =  {
             head: null,
             lenght: 0,
