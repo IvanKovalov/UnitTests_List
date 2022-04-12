@@ -14,11 +14,14 @@ https://github.com/IvanKovalov/UnitTests_List/commit/1a1bc662f6921c6431a113ae2bd
 
 ### Usage   
 
-Clone repository by command  
+1. Clone repository by command  
 > git  clone https://github.com/IvanKovalov/UnitTests_List  
-Then  install dependencies
+
+2. Then  install dependencies
 > npm install  
-For launching program write  
+
+3. For launching program write  
 > node TestList.js  
-For launching tests write  
+
+4. For launching tests write  
 > npm run test  
